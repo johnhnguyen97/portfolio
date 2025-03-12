@@ -6,7 +6,7 @@ import Head from 'next/head'
 
 const LinkItem = ({ href, path, children }) => {
 const active = path === href
-const inactiveColor = useColorModeValue('gray.200', 'whiteAlpha.900')
+const inactiveColor = useColorModeValue('gray.900', 'whiteAlpha.900')
 return (
     <NextLink href={href} legacyBehavior>
         <Link
@@ -33,7 +33,7 @@ const Navbar = props => {
             position="fixed"
             as="nav"
             w="100%"
-            bg={useColorModeValue('#ffffff40', '#202023')}
+            bg={useColorModeValue('#ffffff40', '#20202380')}
             style={{backdropFilter: 'blur(10px)'}}
             zIndex={1}
             {...props}
@@ -60,6 +60,9 @@ const Navbar = props => {
                     flexGrow={1}
                     mt={{ base: 4, md: 0 }}
                 >
+                    <LinkItem href="/about" path={path}>
+                        About
+                    </LinkItem>
                     <LinkItem href="/works" path={path}>
                         Works
                     </LinkItem>
@@ -78,6 +81,9 @@ const Navbar = props => {
                             display={{ base: 'inline-block', md: 'none' }}
                         />
                         <MenuList>
+                            <NextLink href="/about" passHref legacyBehavior>
+                                <MenuItem as={Link}>About</MenuItem>
+                            </NextLink>
                             <NextLink href="/works" passHref legacyBehavior>
                                 <MenuItem as={Link}>Works</MenuItem>
                             </NextLink>
