@@ -16,3 +16,26 @@ padding: 10px;
     transform: rotate(20deg);
 }
 `
+
+const Logo = () => {
+    const logoImg = '/images/contents/logo2.png'
+
+    return (
+        <Link href="/" legacyBehavior>
+            <a>
+                <LogoBox>
+                <Image src={logoImg} width={30} height={30} alt="logo" />
+                <Text
+                    color={useColorModeValue('gray.800', 'whiteAlpha.900')}
+                    fontFamily='M PLUS Rounded 1c'
+                    fontWeight="bold"
+                    ml={3}>
+                        John Nguyen
+                    </Text>
+                </LogoBox>
+            </a>
+        </Link>
+    )
+}
+
+export default Logo
