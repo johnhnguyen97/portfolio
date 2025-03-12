@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "main": "index.js",
-   "scripts": {
+  "scripts": {
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
@@ -14,6 +14,7 @@
   "license": "MIT",
   "description": "John Nguyen's Website",
   "dependencies": {
+    "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
