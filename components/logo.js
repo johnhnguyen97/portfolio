@@ -2,23 +2,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Text, useColorModeValue } from '@chakra-ui/react'
 import styled from '@emotion/styled'
+import { keyframes } from '@emotion/react'
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`
 
 const LogoBox = styled.span`
 font-weight: bold;
 font-size: 18px;
 display: inline-flex;
 align-items: center;
-height: 30px;
-line-height: 20px;
-padding: 10px;
+height: 32px;
+line-height: 32px;
+margin: 8px 0;
 
-&:hover img{
-    transform: rotate(20deg);
+&:hover img {
+    animation: ${spin} 2s linear infinite;
 }
 `
 
 const Logo = () => {
-    const logoImg = '/images/contents/logo2.png'
+    const logoImg = '/images/contents/logo4.svg'
 
     return (
         <Link href="/" legacyBehavior>
