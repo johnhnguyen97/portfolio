@@ -56,7 +56,7 @@ const Page = () => {
                         <Button
                             rightIcon={<ChevronRightIcon />}
                             bg={useColorModeValue('#2975A7', '#2975A7')}
-                            color={useColorModeValue('black', '#DAE0E4')}
+                            color={useColorModeValue('#DAE0E4', '#DAE0E4')}
                             _hover={{
                                 bg: useColorModeValue('#1c5a87', '#1c5a87')
                             }}

@@ -6,19 +6,25 @@ import Head from 'next/head'
 import ThemeToggleButton from './theme-toggle-button'
 
 const LinkItem = ({ href, path, children }) => {
-const active = path === href
-const inactiveColor = useColorModeValue('gray.900', 'whiteAlpha.900')
-return (
-    <NextLink href={href} legacyBehavior>
-        <Link
-            p={2}
-            bg={active ? 'glassTeal.400' : undefined}
-            color={active ? '#202023' : inactiveColor}
-        >
-            {children}
-        </Link>
-    </NextLink>
-)
+    const inactiveColor = useColorModeValue('gray.900', 'whiteAlpha.900')
+    const activeBg = useColorModeValue('rgba(89, 188, 222, 0.2)', 'rgba(89, 188, 222, 0.15)')
+    const activeColor = useColorModeValue('#202023', '#ffffff')
+    const active = path === href
+
+    return (
+        <NextLink href={href} legacyBehavior>
+            <Link
+                p={2}
+                bg={active ? activeBg : undefined}
+                color={active ? activeColor : inactiveColor}
+                fontWeight={active ? 'bold' : 'normal'}
+                borderRadius="md"
+                backdropFilter={active ? 'blur(10px)' : undefined}
+            >
+                {children}
+            </Link>
+        </NextLink>
+    )
 }
 
 const Navbar = props => {
@@ -61,7 +67,7 @@ const Navbar = props => {
                         flexGrow={1}
                         mt={{ base: 4, md: 0 }}
                     >
-                        <LinkItem href="/about" path={path}>
+                        <LinkItem href="/" path={path}>
                             About
                         </LinkItem>
                         <LinkItem href="/works" path={path}>
@@ -83,7 +89,7 @@ const Navbar = props => {
                                     aria-label="Options"
                                 />
                                 <MenuList>
-                                    <NextLink href="/about" passHref legacyBehavior>
+                                    <NextLink href="/" passHref legacyBehavior>
                                         <MenuItem as={Link}>About</MenuItem>
                                     </NextLink>
                                     <NextLink href="/works" passHref legacyBehavior>
