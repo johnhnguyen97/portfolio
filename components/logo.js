@@ -18,6 +18,10 @@ height: 32px;
 line-height: 32px;
 margin: 8px 0;
 
+img {
+    filter: ${props => props.isDark ? 'invert(1)' : 'none'};
+}
+
 &:hover img {
     animation: ${spin} 2s linear infinite;
 }
@@ -25,11 +29,12 @@ margin: 8px 0;
 
 const Logo = () => {
     const logoImg = '/images/contents/logo4.svg'
+    const isDark = useColorModeValue(false, true)
 
     return (
         <Link href="/" legacyBehavior>
             <a>
-                <LogoBox>
+                <LogoBox isDark={isDark}>
                 <Image src={logoImg} width={30} height={30} alt="logo" />
                 <Text
                     color={useColorModeValue('gray.800', 'whiteAlpha.900')}
