@@ -8,7 +8,7 @@ const variants = {
     exit: { opacity: 0, x: 0, y: 20 }
 }
 
-const Layout = ({ children, title }) => {
+const Article = ({ children, title }) => {
     return (
     <motion.article
     initial="hidden" animate="enter" exit="exit" variants={variants} transition={{duration: 0.4, type: 'easeInOut'}} style={{ position: 'relative'}}>
@@ -25,4 +25,4 @@ const Layout = ({ children, title }) => {
     )
 }
 
-export default Layout
+export default Article
