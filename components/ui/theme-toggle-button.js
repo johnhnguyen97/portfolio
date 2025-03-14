@@ -4,8 +4,8 @@ import { Box, useColorMode, useColorModeValue } from '@chakra-ui/react'
 
 const ThemeToggleButton = () => {
   const { toggleColorMode } = useColorMode()
-  const bgColor = useColorModeValue('#8167a9', '#000')
-  const borderColor = useColorModeValue('#000', '#8167a9')
+  const bgColor = useColorModeValue('#0751cf', '#8ec5ff')
+  const borderColor = useColorModeValue('#0751cf', '#8ec5ff')
   const circleColor = useColorModeValue('#fff', '#000')
 
   return (

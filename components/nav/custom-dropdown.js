@@ -48,10 +48,10 @@ const MenuIcon = ({ isOpen }) => {
 const CustomDropdown = ({ items = [] }) => {
   const [isOpen, setIsOpen] = useState(false)
   const bgColor = useColorModeValue('rgba(235, 235, 235,0.4)', 'rgba(20, 21, 26,0.6)')
-  const bgColorAfter = useColorModeValue('rgb(246,239,249)', 'rgba(9,9,12,1)')
+  const bgColorAfter = useColorModeValue('#ffffff', '#14161a')
   const linkColor = useColorModeValue('rgba(0,0,0,0.6)', 'rgba(255,255,255,0.6)')
   const linkHoverColor = useColorModeValue('rgba(0,0,0,1)', 'rgba(255,255,255,1)')
-  const accentColor = '#8167a9'
+  const accentColor = useColorModeValue('#0751cf', '#8ec5ff')
 
   const toggleMenu = useCallback(() => {
     setIsOpen(prev => !prev)

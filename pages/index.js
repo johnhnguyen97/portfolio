@@ -11,7 +11,7 @@ import { BioSection, BioYear } from "../components/core/bio"
 const Page = () => {
     return (
         <Article title="Home">
-            <Container p={4} borderRadius="lg">
+            <Container maxW="container.sm" p={4}>
                 <Box
                     borderRadius="lg"
                     bg={useColorModeValue('rgba(218, 224, 228, 0.5)', 'rgba(218, 224, 228, 0.1)')}
@@ -78,19 +78,19 @@ const Page = () => {
                     </Heading>
                     <BioSection>
                         <BioYear>1997</BioYear>
-                        Born in Houston, Texas.
+                        <Box>Born in Houston, Texas.</Box>
                     </BioSection>
                     <BioSection>
                         <BioYear>2023</BioYear>
-                        Graduated from Western Kentucky University.
+                        <Box>Graduated from Western Kentucky University.</Box>
                     </BioSection>
                     <BioSection>
                         <BioYear>2023</BioYear>
-                        Worked at City of Bowling Green.
+                        <Box>Worked at City of Bowling Green.</Box>
                     </BioSection>
                     <BioSection>
                         <BioYear>2025 - Present</BioYear>
-                        Works as a freelance developer.
+                        <Box>Works as a freelance developer.</Box>
                     </BioSection>
                 </Section>
 
