@@ -1,5 +1,6 @@
-import { useState, useCallback, useEffect } from 'react'
-import { Box, useColorModeValue, Grid } from '@chakra-ui/react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { Box, useColorModeValue } from '@chakra-ui/react'
+import ThemeToggleItem from './theme-toggle-item'
 import NextLink from 'next/link'
 
 const MenuIcon = ({ isOpen }) => {
@@ -47,11 +48,23 @@ const MenuIcon = ({ isOpen }) => {
 
 const CustomDropdown = ({ items = [] }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const contentRef = useRef(null)
+  const [contentHeight, setContentHeight] = useState(0)
   const bgColor = useColorModeValue('rgba(235, 235, 235,0.4)', 'rgba(20, 21, 26,0.6)')
   const bgColorAfter = useColorModeValue('#ffffff', '#14161a')
   const linkColor = useColorModeValue('rgba(0,0,0,0.6)', 'rgba(255,255,255,0.6)')
   const linkHoverColor = useColorModeValue('rgba(0,0,0,1)', 'rgba(255,255,255,1)')
   const accentColor = useColorModeValue('#0751cf', '#8ec5ff')
+  const itemBgColor = useColorModeValue('rgba(255,255,255,0.1)', 'rgba(0,0,0,0.1)')
+  const itemHoverBgColor = useColorModeValue('rgba(255,255,255,0.2)', 'rgba(0,0,0,0.2)')
+
+  useEffect(() => {
+    if (isOpen && contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight)
+    } else {
+      setContentHeight(0)
+    }
+  }, [isOpen, items])
 
   const toggleMenu = useCallback(() => {
     setIsOpen(prev => !prev)
@@ -82,25 +95,49 @@ const CustomDropdown = ({ items = [] }) => {
       </Box>
 
       <Box
+        ref={contentRef}
         className="nav__content"
         position="absolute"
         top="70px"
         right="0"
-        width="280px"
+        width="auto"
+        minWidth="320px"
         textAlign="left"
         opacity={isOpen ? 1 : 0}
         visibility={isOpen ? 'visible' : 'hidden'}
-        transition="opacity 0.6s cubic-bezier(0.77, 0, 0.175, 1)"
-        px={6}
-        py={4}
+        transition="all 0.6s cubic-bezier(0.77, 0, 0.175, 1)"
+        px={8}
+        py={6}
+        maxHeight="80vh"
+        overflowY="auto"
+        css={{
+          '::-webkit-scrollbar': {
+            width: '4px'
+          },
+          '::-webkit-scrollbar-track': {
+            background: 'transparent'
+          },
+          '::-webkit-scrollbar-thumb': {
+            background: useColorModeValue('rgba(0,0,0,0.2)', 'rgba(255,255,255,0.2)'),
+            borderRadius: '2px'
+          }
+        }}
       >
-        <Grid templateColumns="1fr" gap={4}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={5}
+          p={6}
+          width="100%"
+          position="relative"
+        >
           {items.map((item, index) => (
             <Box
               key={index}
               opacity={isOpen ? 1 : 0}
-              transform={`translate(${isOpen ? '0' : '30px'}, 0%)`}
-              transition={`all 0.6s cubic-bezier(0.77, 0, 0.175, 1) ${isOpen ? 0.4 + index * 0.1 : 0}s`}
+              transform={`translate(${isOpen ? '0' : '20px'}, 0%)`}
+              transition={`all 0.6s cubic-bezier(0.77, 0, 0.175, 1) ${isOpen ? 0.3 + index * 0.1 : 0}s`}
+              textAlign="left"
             >
               <NextLink href={item.href} passHref>
                 <Box
@@ -113,11 +150,16 @@ const CustomDropdown = ({ items = [] }) => {
                   fontWeight={600}
                   fontSize="20px"
                   letterSpacing="2px"
-                  pl="40px"
-                  py="5px"
+                  px="24px"
+                  py="14px"
+                  borderRadius="md"
+                  bg={itemBgColor}
                   display="block"
                   transition="all 200ms linear"
                   _hover={{
+                    bg: itemHoverBgColor,
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'lg',
                     color: linkHoverColor,
                     _after: {
                       height: '100%',
@@ -142,7 +184,15 @@ const CustomDropdown = ({ items = [] }) => {
               </NextLink>
             </Box>
           ))}
-        </Grid>
+          <Box
+            opacity={isOpen ? 1 : 0}
+            transform={`translate(${isOpen ? '0' : '20px'}, 0%)`}
+            transition={`all 0.6s cubic-bezier(0.77, 0, 0.175, 1) ${isOpen ? 0.3 + items.length * 0.1 : 0}s`}
+            mt={6}
+          >
+            <ThemeToggleItem />
+          </Box>
+        </Box>
       </Box>
 
       {/* Background overlays */}
@@ -150,8 +200,9 @@ const CustomDropdown = ({ items = [] }) => {
         position="absolute"
         top="70px"
         right="0"
-        width={isOpen ? "280px" : "0"}
-        height={isOpen ? "350px" : "0"}
+        width="auto"
+        minWidth={isOpen ? "320px" : "0"}
+        height={contentHeight}
         borderRadius={isOpen ? "15px" : "200%"}
         bg={bgColor}
         zIndex={-1}
@@ -161,8 +212,9 @@ const CustomDropdown = ({ items = [] }) => {
         position="absolute"
         top="70px"
         right="0"
-        width={isOpen ? "280px" : "0"}
-        height={isOpen ? "350px" : "0"}
+        width="auto"
+        minWidth={isOpen ? "320px" : "0"}
+        height={contentHeight}
         borderRadius={isOpen ? "15px" : "200%"}
         bg={bgColorAfter}
         backgroundPosition="bottom center"

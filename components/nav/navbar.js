@@ -1,7 +1,6 @@
 import Logo from './logo'
 import {Container, Box, Heading, Flex, useColorModeValue} from '@chakra-ui/react'
 import Head from 'next/head'
-import ThemeToggleButton from '../ui/theme-toggle-button'
 import CustomDropdown from './custom-dropdown'
 
 const Navbar = props => {
@@ -39,12 +38,10 @@ const Navbar = props => {
                         display="flex"
                         alignItems="center"
                         justifyContent="flex-end"
-                        gap={4}
                         position="relative"
                         zIndex={100}
                         ml="auto"
                     >
-                        <ThemeToggleButton />
                         <Box position="relative">
                             <CustomDropdown
                                 items={[
