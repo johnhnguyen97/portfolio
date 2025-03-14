@@ -1,11 +1,13 @@
 import { Container, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
 import Section from '../components/core/section'
 import { WorkGridItem } from '../components/ui/grid-item'
+import Article from '../components/layouts/article'
 
 const Works = () => {
     return (
-        <Container pt={14}>
-            <Heading as="h3" fontSize={20} mb={4}>
+        <Article title="Works">
+            <Container>
+                <Heading as="h3" fontSize={20} mb={4}>
                 Works
             </Heading>
 
@@ -75,7 +77,8 @@ const Works = () => {
                     </Section>
                 </SimpleGrid>
             </Section>
-        </Container>
+            </Container>
+        </Article>
     )
 }
 
