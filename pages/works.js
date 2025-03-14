@@ -1,6 +1,6 @@
 import { Container, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
-import Section from '../components/section'
-import { WorkGridItem } from '../components/grid-item'
+import Section from '../components/core/section'
+import { WorkGridItem } from '../components/ui/grid-item'
 
 const Works = () => {
     return (

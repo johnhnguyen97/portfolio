@@ -4,9 +4,9 @@ import { SiThreads, SiBluesky, SiInstagram, SiRefinedgithub } from "react-icons/
 import NextLink from 'next/link'
 import Article from '../components/layouts/article'
 
-import Section from '../components/section'
+import Section from '../components/core/section'
 import Paragraph from "../components/layouts/paragraph"
-import { BioSection, BioYear } from "../components/bio"
+import { BioSection, BioYear } from "../components/core/bio"
 
 const Page = () => {
     return (

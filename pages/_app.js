@@ -1,8 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import Layout from "../components/layouts/main.js"
-import Fonts from "../components/fonts.js"
+import Fonts from "../components/core/fonts.js"
 import theme from "../lib/theme.js"
-import Loading from "../components/loading.js"
+import Loading from "../components/ui/loading.js"
 import { useState, useEffect } from 'react'
 
 const Website = ({ Component, pageProps, router }) => {
