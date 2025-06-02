@@ -55,6 +55,11 @@ const Page = () => {
                         high-quality software solutions to meet the needs of his clients. When he&apos;s not coding, John enjoys
                         singing, voice acting, and spending time with his family plus cat.
                     </Paragraph>
+                    <Paragraph>
+                        Currently, John works as a freelance full-stack developer, focusing on automating workflows, building custom
+                        scraping tools, and developing scalable appointment systems using modern technologies like Python, GraphQL,
+                        Docker, and PostgreSQL. He collaborates with small teams and solo clients to create production-grade solutions.
+                    </Paragraph>
                     <Box align="center" my={4}>
                         <NextLink href="/works" passHref>
                             <Button
@@ -90,7 +95,8 @@ const Page = () => {
                     </BioSection>
                     <BioSection>
                         <BioYear>2025 - Present</BioYear>
-                        <Box>Works as a freelance developer.</Box>
+                        <Box>Works as a freelance developer focused on web automation, data scraping, and full-stack solutions
+                             for small businesses and personal projects.</Box>
                     </BioSection>
                 </Section>
 
